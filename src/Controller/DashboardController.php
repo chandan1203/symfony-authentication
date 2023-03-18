@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MoviesController extends AbstractController
+class DashboardController extends AbstractController
 {
     private $em;
     public function __construct(EntityManagerInterface $em) 
@@ -18,7 +18,7 @@ class MoviesController extends AbstractController
         $this->em = $em;
     }
 
-    #[Route('/', name: 'movies')]
+    #[Route('/', name: 'dashboard')]
     public function index(): Response
     {
         if (!$this->getUser()) {
@@ -27,6 +27,6 @@ class MoviesController extends AbstractController
 
         $userRepository = $this->em->getRepository(User::class);
         $users = $userRepository->findAll();
-        return $this->render('movies/index.html.twig',['users' => $users]);
+        return $this->render('dashboard/index.html.twig',['users' => $users]);
     }
 } 

@@ -14,7 +14,7 @@ class SecurityController extends AbstractController
     {
         
         if ($this->getUser()) {
-            return $this->redirectToRoute('movies');
+            return $this->redirectToRoute('dashboard');
         }
 
         // get the login error if there is one
