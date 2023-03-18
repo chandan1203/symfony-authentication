@@ -18,9 +18,13 @@ class MoviesController extends AbstractController
         $this->em = $em;
     }
 
-    #[Route('/dashbaord', name: 'movies')]
+    #[Route('/', name: 'movies')]
     public function index(): Response
     {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        }
+
         $userRepository = $this->em->getRepository(User::class);
         $users = $userRepository->findAll();
         return $this->render('movies/index.html.twig',['users' => $users]);

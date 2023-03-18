@@ -6,11 +6,11 @@
             <h1 class="text-6xl pt-12 pb-8">
                 User List
             </h1>
-    <table class=" text-center">
+    <table class="table text-center">
         <thead>
             <tr>
                 <th>ID</th>
-                {# <th>Name</th> #}
+                <th>Name</th>
                 <th>Email</th>
             </tr>
         </thead>
@@ -18,7 +18,7 @@
             {% for user in users %}
                 <tr>
                     <td>{{ user.id }}</td>
-                    {# <td>{{ user.name }}</td> #}
+                    <td>{{ user.firstName }}</td>
                     <td>{{ user.email }}</td>
                 </tr>
             {% endfor %}
